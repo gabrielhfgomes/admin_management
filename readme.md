@@ -8,7 +8,6 @@ git clone
 ````
 Put the project in apache server /var/www/
 
-
 Create database:
 ````
 # MySQL without password
@@ -30,3 +29,7 @@ Restart apache
 ````
 systemctl restart apache2
 ````
+
+Usuário default para login:
+user: gabrielhfgomes@hotmail.com
+password: adminnewpassword

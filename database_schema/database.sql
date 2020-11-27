@@ -38,6 +38,6 @@ CREATE TABLE address (
    FOREIGN KEY (id_client) REFERENCES clients(id) ON DELETE CASCADE
 );
 LOCK TABLES users WRITE;
-INSERT INTO users (id, name, email, password) VALUES (1,'Admin','admin@admin.com','$2y$10$3RPloEo62/jxjMDyTD5hvendSSUT0SpPil8GwoSzJWW4roebWRKF6');
+INSERT INTO users (id, name, email, password) VALUES (1,'Gabriel','gabrielhfgomes@hotmail.com','$2y$10$b5eb.3DGeGqDLXavQwX5qeV1hGEtsJyHjJSbhhmsmzx2IHuyPhLVq');
 UNLOCK TABLES;
 
