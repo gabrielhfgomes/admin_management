@@ -1,0 +1,26 @@
+/*body {background: #FFF;}*/
+p.breakline {
+    white-space: pre-wrap;
+    word-break: normal;
+}
+
+body {
+    background-image: url("https://themes.kabum.com.br/conteudo/layout/1488/bg.jpg?int_banner_name=THEME-E-HOJE-BLACK-FRIDAY&int_banner_position=tematizacao_home");
+}
+
+.mainBar {
+    background-color: #F89100;
+    color:black;
+}
+
+#delete-button {
+    float: left;
+}
+
+.wrapper {
+    display: inline;
+}
+
+.title-subpage {
+    color: white;
+}
