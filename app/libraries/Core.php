@@ -3,6 +3,7 @@
     * App Core Class
     * Create URL & load core controller
     * URL FORMAT - /controller/method/params
+    * Core makes the routing for the application
     */
 
     class Core

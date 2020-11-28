@@ -40,11 +40,6 @@
             }
         }
 
-        public function getAllAdressByClientId($clientId) {
-            $this->db->query('SELECT * FROM address join client ');
-            return $this->db->resultSet();
-        }
-
         public function updateAddress($data)
         {
             $sql = "UPDATE address SET id_client = :id_client, description = :description, 

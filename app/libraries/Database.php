@@ -6,40 +6,43 @@
     * Create prepared statement
     * Bind Values
     * Return rows and results
+    * isolate query preparing process
     */
     class Database
     {
-        private $host = DB_HOSTNAME;
-        private $user = DB_USERNAME;
-        private $pass = DB_PASSWORD;
-        private $charset = DB_CHARSET;
-        private $dbname = DB_NAME;
-        private $dbh;
-        private $stmt;
-        private $error;
+        private static $host = DB_HOSTNAME;
+        private static $user = DB_USERNAME;
+        private static $pass = DB_PASSWORD;
+        private static $charset = DB_CHARSET;
+        private static $dbname = DB_NAME;
+        private static $dbh;
+        private static $stmt;
+        private static $error;
 
 
         public function __construct()
         {
-            $dsn='mysql:host=' . $this->host . ';charset=' . $this->charset . ';dbname=' . $this->dbname;
-            $options = array(
-                PDO::ATTR_PERSISTENT => true,
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
-                PDO::ATTR_CASE => PDO::CASE_LOWER
-             );
+            if(self::$dbh == null) {
+                $dsn = 'mysql:host=' . self::$host . ';charset=' . self::$charset . ';dbname=' . self::$dbname;
+                $options = array(
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+                    PDO::ATTR_CASE => PDO::CASE_LOWER
+                );
 
-            try{
-                $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
-            } catch(PDOException $e){
-                $this->error = $e->getMessage();
-                echo $this->error;
+                try {
+                    self::$dbh = new PDO($dsn, self::$user, self::$pass, $options);
+                } catch (PDOException $e) {
+                    self::$error = $e->getMessage();
+                    echo self::$error;
+                }
             }
         }
 
         public function query($sql)
         {
-            $this->stmt = $this->dbh->prepare($sql);
+            self::$stmt = self::$dbh->prepare($sql);
         }
 
         public function bind($param, $value, $type = null)
@@ -60,26 +63,26 @@
                         break;
                 }
             }
-            $this->stmt->bindValue($param, $value, $type);
+            self::$stmt->bindValue($param, $value, $type);
        }
 
        public function execute()
        {
-           return $this->stmt->execute();
+           return self::$stmt->execute();
        }
 
        public function resultSet(){
            $this->execute();
-           return $this->stmt->fetchAll();
+           return self::$stmt->fetchAll();
        }
 
        public function single(){
            $this->execute();
-           return $this->stmt->fetch();
+           return self::$stmt->fetch();
        }
 
        public function rowCount(){
-           return $this->stmt->rowCount();
+           return self::$stmt->rowCount();
        }
 
     }
