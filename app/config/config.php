@@ -3,7 +3,7 @@
     if(isset($_SERVER['RDS_HOSTNAME'])) {
         define('DB_HOSTNAME', $_SERVER['RDS_HOSTNAME']);
     } else {
-        define('DB_HOST','localhost');
+        define('DB_HOSTNAME','localhost');
     }
     
     if(isset($_SERVER['RDS_USERNAME'])) {
