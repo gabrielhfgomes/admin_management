@@ -9,14 +9,15 @@
     */
     class Database
     {
-        private $host = DB_HOST;
-        private $user = DB_USER;
-        private $pass = DB_PASS;
+        private $host = DB_HOSTNAME;
+        private $user = DB_USERNAME;
+        private $pass = DB_PASSWORD;
         private $charset = DB_CHARSET;
         private $dbname = DB_NAME;
         private $dbh;
         private $stmt;
         private $error;
+
 
         public function __construct()
         {

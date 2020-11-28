@@ -33,9 +33,6 @@
           <li class="nav-item">
               <a class="nav-link" href="<?php echo URL_ROOT;?>/users/login">Login</a>
           </li>
-          <li class="nav-item">
-             <a class="nav-link" href="<?php echo URL_ROOT;?>/users/register"><i class="fa fa-sign-in"></i> Sign in </a>
-          </li>
           <?php endif; ?>
       </ul>
 </nav>

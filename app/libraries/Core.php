@@ -15,7 +15,7 @@
         public function __construct()
         {
             $url = $this->getUrl();
-
+            
             if(isset($url[2]) && !in_array($url[2], $this->resourceActions)) {
                 if (file_exists('../app/controllers/' . ucwords($url[2]) . '.php')) {
                     $this->currentController = ucwords($url[2]);

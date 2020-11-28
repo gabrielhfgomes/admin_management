@@ -3,6 +3,7 @@
         <h1><?php echo $data['title']; ?></h1>
         <p><?php echo $data['description']; ?></p>
         <p><?php echo APP_VERSION; ?></p>
+        <p>Powered by AWS</p>
         <p>Application next improvements:</p>
         <ul>
             <li>Implement AWS Cognito authetication</li>
