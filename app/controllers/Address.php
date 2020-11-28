@@ -83,6 +83,9 @@ class Address extends Controller
 
     public function add($lastResource, $clientId)
     {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = $this->validateFieldsForRegistration();
             $data['clientId'] = $clientId;
@@ -127,6 +130,9 @@ class Address extends Controller
 
     public function edit($lastResource, $clientId, $addressId)
     {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = $this->validateFieldsForRegistration();
@@ -181,7 +187,9 @@ class Address extends Controller
 
     public function delete($lastResource, $clientId, $addressId)
     {
-        var_dump($lastResource, $clientId, $addressId);
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($this->addressModel->deleteAddress($addressId)) {
                 flash('address_message', 'The address was removed successfully!');

@@ -26,7 +26,6 @@ class Client extends Controller
     {
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-
         $data = [
             'name' => trim($_POST['name']),
             'birth_date' => $_POST['birth_date'],
@@ -65,6 +64,9 @@ class Client extends Controller
 
     public function add()
     {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = $this->validateFieldsForRegistration('add');
 
@@ -98,6 +100,9 @@ class Client extends Controller
 
     public function edit($id)
     {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
             $data = $this->validateFieldsForRegistration('edit');
@@ -155,6 +160,9 @@ class Client extends Controller
 
     public function delete($id)
     {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($this->clientModel->deleteClient($id)) {
                 flash('client_message', 'The client was removed successfully!');

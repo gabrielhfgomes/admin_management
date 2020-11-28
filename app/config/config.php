@@ -1,8 +1,9 @@
 <?php
-
+    //RDS credentials
     if(isset($_SERVER['RDS_HOSTNAME'])) {
         define('DB_HOSTNAME', $_SERVER['RDS_HOSTNAME']);
     } else {
+        //Local credentials
         define('DB_HOSTNAME','localhost');
     }
     
