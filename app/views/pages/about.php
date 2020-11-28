@@ -11,6 +11,8 @@
             <li>Tables Pagination with angular components</li>
             <li>Tables Search with angular components</li>
             <li>Implement angular translations resources for internacionalization</li>
+            <li>Implement CEP automatic field fill</li>
+            <li>Implement session expiration</li>
         </ul>
     </div>
 <?php require APP_ROOT . '/views/inc/footer.php' ?>
