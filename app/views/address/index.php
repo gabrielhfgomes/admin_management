@@ -6,7 +6,7 @@
             <h3>Adresses</h3>
         </div>
         <div class="col-md-6">
-            <a href="<?php echo URL.$_SERVER['REQUEST_URI'];?>/add" class="btn btn-primary pull-right">
+            <a href="<?php echo URL_ROOT ?>/client/<?php echo $data['clientId']?>/address/add" class="btn btn-primary pull-right">
                 <i class="fa fa-pencil"></i> Add Address
             </a>
         </div>
